@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 测试环境 -->
+    <beans profile="test">
+        <context:property-placeholder location="classpath:properties/common.properties, classpath:properties/test/*.properties" file-encoding="UTF-8"/>
+    </beans>
+
+    <!-- 生产环境 -->
+    <beans profile="prod">
+        <context:property-placeholder location="classpath:properties/common.properties, classpath:properties/prod/*.properties" file-encoding="UTF-8"/>
+    </beans>
+
+    <!-- 预发环境 -->
+    <beans profile="uat">
+        <context:property-placeholder location="classpath:properties/common.properties, classpath:properties/uat/*.properties" file-encoding="UTF-8"/>
+    </beans>
+
+    <!-- AB环境 -->
+    <beans profile="ab">
+        <context:property-placeholder location="classpath:properties/common.properties, classpath:properties/ab/*.properties" file-encoding="UTF-8"/>
+    </beans>
+
+    <!-- 开发环境 -->
+    <beans profile="dev">
+        <context:property-placeholder location="classpath:properties/common.properties, classpath:properties/dev/*.properties" file-encoding="UTF-8"/>
+    </beans>
+
+</beans>

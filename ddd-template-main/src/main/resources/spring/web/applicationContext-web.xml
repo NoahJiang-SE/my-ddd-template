@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 启用Spring MVC注解驱动 -->
+    <mvc:annotation-driven/>
+
+    <!-- 注册TraceId拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 拦截所有请求 -->
+            <mvc:mapping path="/**"/>
+            <!-- 指定排除的路径（可选） -->
+            <!-- <mvc:exclude-mapping path="/static/**"/> -->
+            <!-- 配置拦截器Bean -->
+            <bean class="com.noahjiang.se.main.interceptor.TraceIdInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
