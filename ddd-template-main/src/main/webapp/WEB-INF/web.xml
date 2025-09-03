@@ -22,6 +22,12 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- 配置Spring防止内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+
     <!-- 配置ContextLoaderListener加载根应用上下文 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -31,10 +37,39 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/properties/applicationContext-properties.xml,
-            classpath:spring/web/applicationContext-web.xml,
-            classpath:spring/aop/applicationContext-aop.xml
+            classpath:/applicationContext.xml
         </param-value>
+    </context-param>
+
+    <!-- 配置log4j2上下文监听器 -->
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+    <!-- 配置log4j2过滤器 -->
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 指定log4j2配置文件的位置 -->
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:log4j2.xml</param-value>
+    </context-param>
+
+    <!-- 配置默认环境 -->
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>dev</param-value>
+    </context-param>
+
+    <!-- 使用Maven profile实现环境区分 -->
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>${spring.profiles.active}</param-value>
     </context-param>
 
     <!-- 配置DispatcherServlet -->
@@ -54,8 +89,6 @@
 
     <!-- 配置欢迎页 -->
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
