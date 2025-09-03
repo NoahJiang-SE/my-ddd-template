@@ -22,6 +22,21 @@
     </properties>
     
     <dependencies>
+        <!-- application 依赖 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>my-ddd-template-application</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!-- web 依赖 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>my-ddd-template-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    
         <!-- Spring Web MVC -->
         <dependency>
             <groupId>org.springframework</groupId>

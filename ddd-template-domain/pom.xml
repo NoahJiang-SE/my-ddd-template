@@ -17,4 +17,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <!-- 依赖 infrastructure 模块 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>ddd-template-infrastructure</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- 依赖 spi 模块 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>ddd-template-spi</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

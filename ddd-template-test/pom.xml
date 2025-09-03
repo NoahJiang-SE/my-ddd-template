@@ -17,4 +17,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <!-- 依赖 web 模块 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>my-ddd-template-web</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- 依赖 application 模块 -->
+        <dependency>
+            <groupId>noahJiang.se</groupId>
+            <artifactId>my-ddd-template-application</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
